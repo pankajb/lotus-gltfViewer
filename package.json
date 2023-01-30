@@ -1,0 +1,43 @@
+{
+  "private": true,
+  "version": "1.5.1",
+  "description": "Preview glTF models using three.js and a drag-and-drop interface.",
+  "author": "Don McCurdy <dm@donmccurdy.com> (https://www.donmccurdy.com)",
+  "license": "MIT",
+  "main": "public/app.js",
+  "browserslist": [
+    ">1%",
+    "not dead"
+  ],
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "assets",
+        "staticOutDir": "assets"
+      }
+    ]
+  },
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "build:registry": "curl https://raw.githack.com/KhronosGroup/glTF-Generator-Registry/main/registry.json -o lib/gltf-generator-registry.json",
+    "clean": "rimraf dist/**",
+    "test": "node test/gen_test.js",
+    "deploy": "npm run build && vercel --local-config vercel.json --prod",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.9",
+    "glob-to-regexp": "^0.4.1",
+    "gltf-validator": "^2.0.0-dev.3.9",
+    "handlebars": "^4.7.6",
+    "query-string": "^7.1.1",
+    "simple-dropzone": "^0.8.1",
+    "three": "^0.148.0"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.2.10",
+    "rimraf": "^4.1.1",
+    "vite": "^4.0.4"
+  }
+}
